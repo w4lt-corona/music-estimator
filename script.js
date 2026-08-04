@@ -1,6 +1,6 @@
 // ============================================================
 // Video Game Music Estimator
-// script.js
+// script.js  (with honeypot + cooldown security)
 // ============================================================
 
 // ------------------------------------------------------------
@@ -10,7 +10,7 @@ const EMAILJS_PUBLIC_KEY  = "SM5_Bv-ybpDOgL2-1";
 const EMAILJS_SERVICE_ID  = "service_c2frvbl";
 const EMAILJS_TEMPLATE_ID = "template_jumxfjj";
 
-// Try to initialize EmailJS (won't break the app if it fails)
+// Initialize EmailJS safely
 try {
     if (typeof emailjs !== "undefined") {
         emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -32,6 +32,8 @@ const RATES = {
 // 3. STATE
 // ------------------------------------------------------------
 let trackCount = 0;
+let isSubmitting = false;          // prevents double-clicks
+const COOLDOWN_MS = 45000;         // 45 second cooldown after submit
 
 // ------------------------------------------------------------
 // 4. DOM ELEMENTS
@@ -179,8 +181,6 @@ function createTrack() {
 if (addTrackButton) {
     addTrackButton.addEventListener("click", createTrack);
 }
-
-// Start with one track
 createTrack();
 
 // ------------------------------------------------------------
@@ -209,11 +209,24 @@ function getTrackListForEmail() {
 }
 
 // ------------------------------------------------------------
-// 9. FORM SUBMIT → SEND EMAIL
+// 9. FORM SUBMIT (with honeypot + cooldown)
 // ------------------------------------------------------------
 if (estimateForm) {
     estimateForm.addEventListener("submit", function(e) {
         e.preventDefault();
+
+        // --- Honeypot check ---
+        const honeypot = document.getElementById("website");
+        if (honeypot && honeypot.value.trim() !== "") {
+            // Bot detected – pretend success but do nothing
+            formMessage.textContent = "Thank you! Your estimate has been sent.";
+            formMessage.className = "form-message success";
+            return;
+        }
+
+        // --- Prevent double submission ---
+        if (isSubmitting) return;
+        isSubmitting = true;
 
         requestQuoteBtn.disabled = true;
         requestQuoteBtn.textContent = "Sending...";
@@ -232,10 +245,9 @@ if (estimateForm) {
         };
 
         if (typeof emailjs === "undefined") {
-            formMessage.textContent = "Email service is not loaded. Please refresh the page and try again.";
+            formMessage.textContent = "Email service is not loaded. Please refresh and try again.";
             formMessage.className = "form-message error";
-            requestQuoteBtn.disabled = false;
-            requestQuoteBtn.textContent = "Request Quote";
+            resetSubmitButton();
             return;
         }
 
@@ -243,17 +255,28 @@ if (estimateForm) {
             .then(function() {
                 formMessage.textContent = "Success! Your estimate has been sent. Check your email shortly.";
                 formMessage.className = "form-message success";
-                requestQuoteBtn.disabled = false;
-                requestQuoteBtn.textContent = "Request Quote";
+                startCooldown();
             })
             .catch(function(error) {
                 console.error("EmailJS error:", error);
-                formMessage.textContent = "Something went wrong while sending. Please try again or email me directly.";
+                formMessage.textContent = "Something went wrong while sending. Please try again later.";
                 formMessage.className = "form-message error";
-                requestQuoteBtn.disabled = false;
-                requestQuoteBtn.textContent = "Request Quote";
+                resetSubmitButton();
             });
     });
+}
+
+function resetSubmitButton() {
+    isSubmitting = false;
+    requestQuoteBtn.disabled = false;
+    requestQuoteBtn.textContent = "Request Quote";
+}
+
+function startCooldown() {
+    // Keep button disabled for the cooldown period
+    setTimeout(function() {
+        resetSubmitButton();
+    }, COOLDOWN_MS);
 }
 
 // ------------------------------------------------------------

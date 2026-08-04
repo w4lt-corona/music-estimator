@@ -263,3 +263,14 @@ textarea {
     background: #663333;
     color: #ffb0b0;
 }
+/* Honeypot - completely hidden from real users */
+.honeypot {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
+    overflow: hidden;
+}
