@@ -1,0 +1,265 @@
+/* Basic page setup */
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.intro {
+    color: #ccc;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* ===================== SERVICE LEVEL LEGEND ===================== */
+.legend {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 25px 20px;
+    margin-bottom: 35px;
+    text-align: left;
+}
+
+.legend h2 {
+    margin: 0 0 20px 0;
+    font-size: 1.3rem;
+    text-align: center;
+    color: #eee;
+}
+
+.legend-item {
+    margin-bottom: 18px;
+}
+
+.legend-item:last-child {
+    margin-bottom: 0;
+}
+
+.legend-title {
+    font-weight: bold;
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+}
+
+.legend-title.minimal { color: #7eb8ff; }
+.legend-title.standard { color: #7dffb3; }
+.legend-title.cinematic { color: #ffb347; }
+
+.legend-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #bbb;
+}
+
+/* ===================== TRACKS ===================== */
+#add-track {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+#add-track:hover {
+    background: #666;
+}
+
+.track {
+    background: #222;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.track h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+select,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #333;
+    color: white;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.track-total {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #7dffb3;
+}
+
+/* ===================== GRAND TOTAL ===================== */
+#total-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+#total {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #7dffb3;
+}
+
+.disclaimer {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.5;
+    max-width: 500px;
+    margin: 15px auto 0;
+}
+
+/* ===================== CONTACT FORM ===================== */
+#contact-section {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #444;
+    text-align: left;
+}
+
+#contact-section h2 {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.form-intro {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.required {
+    color: #ff6b6b;
+}
+
+.optional {
+    color: #777;
+    font-size: 0.85rem;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.form-buttons button {
+    flex: 1;
+    min-width: 180px;
+    padding: 14px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#request-quote-btn {
+    background: #7dffb3;
+    color: #111;
+}
+
+#request-quote-btn:hover {
+    background: #5ce69a;
+}
+
+#book-call-btn {
+    background: #444;
+    color: white;
+}
+
+#book-call-btn:hover {
+    background: #666;
+}
+
+.form-message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95rem;
+    min-height: 24px;
+}
+
+.form-message.success {
+    color: #7dffb3;
+}
+
+.form-message.error {
+    color: #ff6b6b;
+}/* Track header with Remove button */
+.track-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.track-header h3 {
+    margin: 0;
+}
+
+.remove-track-btn {
+    background: #442222;
+    color: #ff8a8a;
+    border: 1px solid #663333;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.remove-track-btn:hover {
+    background: #663333;
+    color: #ffb0b0;
+}
