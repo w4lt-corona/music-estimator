@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Demo Track – Walt Corona</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Free Demo Track</h1>
+        <p class="intro">
+            Tell me about one short cue and I’ll create a free 1-minute demo so you can hear how I work.
+        </p>
+
+        <!-- Single Track Card -->
+        <div id="tracks-container">
+            <div class="track">
+                <div class="track-header">
+                    <h3>Demo Track</h3>
+                </div>
+
+                <label>Track Name</label>
+                <input type="text" class="track-name" value="Enter a name you'll remember (e.g. Main Theme Demo)" placeholder="e.g. Main Theme Demo">
+
+                <label>Track Type</label>
+                <select class="track-type">
+                    <option>Title Screen</option>
+                    <option>Main Menu</option>
+                    <option>Exploration</option>
+                    <option>Ambient / Atmosphere</option>
+                    <option>Puzzle</option>
+                    <option>Stealth</option>
+                    <option>Battle</option>
+                    <option>Boss</option>
+                    <option>Final Boss</option>
+                    <option>Chase / Action</option>
+                    <option>Cutscene / Cinematic</option>
+                    <option>Emotional / Story</option>
+                    <option>Hub / Town</option>
+                    <option>World Map</option>
+                    <option>Victory</option>
+                    <option>Game Over</option>
+                    <option>Credits</option>
+                    <option>Character Theme</option>
+                    <option>Other</option>
+                </select>
+
+                <label>Length</label>
+                <select class="track-length">
+                    <option value="1" selected>1:00 (maximum for free demo)</option>
+                </select>
+
+                <label>Notes for the Demo</label>
+                <textarea class="demo-notes" rows="3" placeholder="Describe the mood, references, or what you’d like to hear..."></textarea>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div id="contact-section">
+            <h2>Request Your Free Demo</h2>
+            <p class="form-intro">Fill out the form and I’ll send you a short original demo based on your description.</p>
+
+            <form id="estimate-form">
+                <!-- Honeypot -->
+                <div class="honeypot" aria-hidden="true">
+                    <label for="website">Website</label>
+                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="Your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="you@studio.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone <span class="optional">(optional)</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                </div>
+
+                <div class="form-group">
+                    <label for="discord">Discord <span class="optional">(optional)</span></label>
+                    <input type="text" id="discord" name="discord" placeholder="username or @username">
+                </div>
+
+                <div class="form-group">
+                    <label for="game-title">Game / Project Title <span class="optional">(optional)</span></label>
+                    <input type="text" id="game-title" name="game-title" placeholder="e.g. Echoes of the Forgotten Realm">
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Additional Notes <span class="optional">(optional)</span></label>
+                    <textarea id="notes" name="notes" rows="4" placeholder="Anything else I should know..."></textarea>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" id="request-quote-btn">Request Free Demo</button>
+                    <button type="button" id="book-call-btn">Book Free Scope Discussion</button>
+                </div>
+            </form>
+
+            <p id="form-message" class="form-message"></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="free-demo.js"></script>
+</body>
+</html>
