@@ -23,12 +23,10 @@ const COOLDOWN_MS = 45000;
 function getDemoDetails() {
     const track = document.querySelector(".track");
     const name = track.querySelector(".track-name").value;
-    const type = track.querySelector(".track-type").value;
     const notes = track.querySelector(".demo-notes").value || "None";
 
-    return `FREE DEMO REQUEST\n\nTrack Name: ${name}\nTrack Type: ${type}\nLength: 1:00 (max)\nDemo Notes: ${notes}`;
+    return `FREE DEMO REQUEST\n\nTrack Name: ${name}\nLength: 1:00 (max)\nDemo Notes: ${notes}`;
 }
-
 if (estimateForm) {
     estimateForm.addEventListener("submit", function(e) {
         e.preventDefault();
